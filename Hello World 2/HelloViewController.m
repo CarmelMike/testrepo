@@ -5,7 +5,7 @@
 //  Created by Carmel on 10/15/13.
 //  Copyright (c) 2013 Carmel. All rights reserved.
 //
-// THIS IS SOME TEST CODE....
+// THIS IS SOME TEST CODE.... test
 
 #import "HelloViewController.h"
 
@@ -18,49 +18,66 @@
 
 - (id)init
 {
-    self.numberOfButtons = 4;
+    self.numberOfButtons = 100;
+    NSLog(@"start init: %i", self.numberOfButtons);
     self = [super init];
     if (self) {
-       self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
+        self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
+        NSLog(@"end init: %i", self.numberOfButtons);
+        self.numberField = [self createTextField:30];
+        NSLog(@"end init2: %i", self.numberOfButtons);
     }
 
-    self.numberField = [self createTextField:30];
-    
     return self;
 }
 
 - (UITextField*) createTextField:(NSInteger) yOrigin
 {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
+  //  UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
+    self.numberField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
+    self.numberField.borderStyle = UITextBorderStyleRoundedRect;
+    self.numberField.font = [UIFont systemFontOfSize:15];
+    self.numberField.placeholder = @"Enter number of buttons";
+    self.numberField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.numberField.keyboardType = UIKeyboardTypeNumberPad;
+    self.numberField.returnKeyType = UIReturnKeyDone;
+    self.numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.font = [UIFont systemFontOfSize:15];
-    textField.placeholder = @"Enter number of buttons";
- //   textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.keyboardType = UIKeyboardTypeNumberPad;
-   // textField.returnKeyType = UIReturnKeyDone;
-    //textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [textField resignFirstResponder];
-    //textField.resignFirstResponder;
-    NSInteger value = [textField.text integerValue];
- //   textField.delegate = self;
-    
-     [self.view addSubview:textField];
+    //self.numberOfButtons = [self.numberField.text integerValue];
+    NSLog(@"createTextField: %i", self.numberOfButtons);
+    [self.view addSubview:self.numberField];
     // [textField release];
-    return textField;
+    return self.numberField;
 }
     
 
--(void)touchesEnded:(NSSet *)touches
-          withEvent:(UIEvent *)event
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    self.numberOfButtons = [self.numberField.text integerValue];
     [self.numberField resignFirstResponder];
+    [self clearButtonArray];
+    [self setValuesForButtons];
+   // self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
+    //NSString *digit = [[sender titlelabel] text];
+    NSLog(@"in touchesEnded: %i", self.numberOfButtons);
+//    NSLog(@%@", digit);
+
 }
+
+
+
 
 - (IBAction)backgroundTap:(id)sender {
-    [self.nameField resignFirstResponder];
+
     [self.numberField resignFirstResponder];
+}
+
+- (void) clearButtonArray
+{
+    for (int i = 0; i < self.buttonArray.count; i++) {
+        self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(0, 0, 0, 0) color:[UIColor redColor] title:@""];
+    }
+
 }
 
 
@@ -91,7 +108,7 @@
 
 - (void)setValuesForButtons
 {
-    for (int i = 0; i < self.buttonArray.count; i++) {
+    for (int i = 0; i < self.numberOfButtons; i++) {
         int y = (i + 1) * 100;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
 
