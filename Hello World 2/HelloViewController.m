@@ -24,28 +24,44 @@
        self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
     }
 
-    self.createTextField = [self createTextField:30];
+    self.numberField = [self createTextField:30];
     
     return self;
 }
 
-- (UITextField*) createTextField:(NSInteger) y
+- (UITextField*) createTextField:(NSInteger) yOrigin
 {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, y, 220, 40)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
+    
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.font = [UIFont systemFontOfSize:15];
     textField.placeholder = @"Enter number of buttons";
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.keyboardType = UIKeyboardTypeDefault;
-    textField.returnKeyType = UIReturnKeyDone;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+ //   textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+   // textField.returnKeyType = UIReturnKeyDone;
+    //textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    //  textField.delegate = self;
-    [self.view addSubview:textField];
+    [textField resignFirstResponder];
+    //textField.resignFirstResponder;
+    NSInteger value = [textField.text integerValue];
+ //   textField.delegate = self;
+    
+     [self.view addSubview:textField];
     // [textField release];
     return textField;
 }
     
+
+-(void)touchesEnded:(NSSet *)touches
+          withEvent:(UIEvent *)event
+{
+    [self.numberField resignFirstResponder];
+}
+
+- (IBAction)backgroundTap:(id)sender {
+    [self.nameField resignFirstResponder];
+    [self.numberField resignFirstResponder];
+}
 
 
 - (NSMutableArray*) createButtonArrayWithSize:(NSInteger) size

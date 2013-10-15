@@ -11,7 +11,13 @@
 @interface HelloViewController : UIViewController
 
 @property(nonatomic, retain) NSMutableArray *buttonArray;
-@property(nonatomic, retain) UITextField *createTextField;
+//@property(nonatomic, retain) UITextField *createTextField;
 @property(nonatomic) int numberOfButtons;
+
+@property (nonatomic, retain) IBOutlet UITextField *nameField;
+@property (nonatomic, retain) IBOutlet UITextField *numberField;
+//- (IBAction)textFieldDoneEditing:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
+
 
 @end
