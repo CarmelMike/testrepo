@@ -18,22 +18,23 @@
 
 - (id)init
 {
+    self.numberOfButtons = 4;
     self = [super init];
     if (self) {
-       self.buttonArray = [self createButtonArrayWithSize:4];
+       self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
     }
 
-    
+    self.createTextField = [self createTextField:30];
     
     return self;
 }
 
-- (void) createTextField:(NSInteger) y
+- (UITextField*) createTextField:(NSInteger) y
 {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, y, 300, 40)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, y, 220, 40)];
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.font = [UIFont systemFontOfSize:15];
-    textField.placeholder = @"enter text";
+    textField.placeholder = @"Enter number of buttons";
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.keyboardType = UIKeyboardTypeDefault;
     textField.returnKeyType = UIReturnKeyDone;
@@ -42,6 +43,7 @@
     //  textField.delegate = self;
     [self.view addSubview:textField];
     // [textField release];
+    return textField;
 }
     
 
@@ -75,7 +77,7 @@
 {
     for (int i = 0; i < self.buttonArray.count; i++) {
         int y = (i + 1) * 100;
-        self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(75, y, 205, 75) color:[UIColor redColor] title:@"Paint It Black"];
+        self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
 
         //saved if I want to go back to custom buttons with different text, etc
         /*

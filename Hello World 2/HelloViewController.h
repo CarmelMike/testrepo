@@ -10,9 +10,8 @@
 
 @interface HelloViewController : UIViewController
 
-@property(nonatomic, retain) UIButton *coolButton;
-@property(nonatomic, retain) UIButton *bottomButton;
 @property(nonatomic, retain) NSMutableArray *buttonArray;
-
+@property(nonatomic, retain) UITextField *createTextField;
+@property(nonatomic) int numberOfButtons;
 
 @end
