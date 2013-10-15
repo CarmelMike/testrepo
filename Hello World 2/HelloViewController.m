@@ -21,10 +21,30 @@
     self = [super init];
     if (self) {
        self.buttonArray = [self createButtonArrayWithSize:4];
-        UITextField *tres;
     }
+
+    
+    
     return self;
 }
+
+- (void) createTextField:(NSInteger) y
+{
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, y, 300, 40)];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.font = [UIFont systemFontOfSize:15];
+    textField.placeholder = @"enter text";
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.returnKeyType = UIReturnKeyDone;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    //  textField.delegate = self;
+    [self.view addSubview:textField];
+    // [textField release];
+}
+    
+
 
 - (NSMutableArray*) createButtonArrayWithSize:(NSInteger) size
 {
