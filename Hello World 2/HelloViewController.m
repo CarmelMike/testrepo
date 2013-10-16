@@ -20,6 +20,7 @@
 {
     self.numberOfButtons = 100;
     self.sliderValue = 2;
+    self.fullNumber = @"";
     NSLog(@"start init: %i", self.numberOfButtons);
     self = [super init];
     if (self) {
@@ -71,9 +72,9 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    self.numberOfButtons = self.sliderBar.value;
-    [self.sliderBar resignFirstResponder];
-    //self.numberOfButtons = [self.numberField.text integerValue];
+    //self.numberOfButtons = self.sliderBar.value;
+    //[self.sliderBar resignFirstResponder];
+    self.numberOfButtons = [self.numberField.text integerValue];
     [self.numberField resignFirstResponder];
     [self clearButtonArray];
     [self setValuesForButtons];
@@ -214,8 +215,34 @@
 {
     NSLog(@"Length: %lu ",(unsigned long)range.length);
     NSLog(@"Range: %lu ",(unsigned long)range.location);
-    NSLog(@"testing delegate %@",string);
-    return 1;
+    NSLog(@"String: %@",string);
+    
+    
+    //NSString *errorTag = @"Error: ";
+    //NSString *errorString = @"premature end of file.";
+    //NSString *errorMessage = [errorTag stringByAppendingString:errorString];
+    
+//    - (NSString *)stringByReplacingCharactersInRange:(NSRange)range withString:(NSString *)replacement
+
+    self.fullNumber = [self.fullNumber stringByReplacingCharactersInRange:range withString:string];
+    
+    
+    //self.fullNumber = [self.fullNumber stringByAppendingString:string];
+    
+    long len = string.length;
+  //  len = 2;
+    
+    /*
+     char c = [string characterAtIndex:(range.length)];
+    c = 'c';
+    */
+
+    NSLog(@"Length of string: %lu ",(unsigned long)len);
+    NSLog(@"%@", self.fullNumber);
+    //NSLog(@"Character: %c ",c);
+    
+     return 1;
+    
 }
 
 - (void)didReceiveMemoryWarning

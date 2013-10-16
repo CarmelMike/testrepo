@@ -12,6 +12,7 @@
 
 @property(nonatomic, retain) NSMutableArray *buttonArray;
 @property(nonatomic) int numberOfButtons;
+@property(nonatomic) NSString *fullNumber;
 @property (nonatomic, retain) IBOutlet UISlider *sliderBar;
 @property (nonatomic, retain) IBOutlet UITextField *numberField;
 @property(nonatomic) int sliderValue;
