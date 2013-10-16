@@ -72,10 +72,10 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    //self.numberOfButtons = self.sliderBar.value;
-    //[self.sliderBar resignFirstResponder];
-    self.numberOfButtons = [self.numberField.text integerValue];
-    [self.numberField resignFirstResponder];
+    self.numberOfButtons = self.sliderBar.value;
+    [self.sliderBar resignFirstResponder];
+    //self.numberOfButtons = [self.numberField.text integerValue];
+    //[self.numberField resignFirstResponder];
     [self clearButtonArray];
     [self setValuesForButtons];
    // self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
@@ -136,8 +136,10 @@
     if (self.numberOfButtons <= 0){
         self.numberOfButtons = 0;
     }
+    
+    int yAdjustment = 40;
     for (int i = 0; i < self.numberOfButtons; i++) {
-        int y = (i + 1) * 100;
+        int y = (i + 1) * 100 + yAdjustment;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
 
         //saved if I want to go back to custom buttons with different text, etc
@@ -213,9 +215,9 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"Length: %lu ",(unsigned long)range.length);
-    NSLog(@"Range: %lu ",(unsigned long)range.location);
-    NSLog(@"String: %@",string);
+   // NSLog(@"Length: %lu ",(unsigned long)range.length);
+   // NSLog(@"Range: %lu ",(unsigned long)range.location);
+   // NSLog(@"String: %@",string);
     
     
     //NSString *errorTag = @"Error: ";
@@ -229,16 +231,19 @@
     
     //self.fullNumber = [self.fullNumber stringByAppendingString:string];
     
-    long len = string.length;
+    //long len = string.length;
   //  len = 2;
     
     /*
      char c = [string characterAtIndex:(range.length)];
     c = 'c';
     */
-
-    NSLog(@"Length of string: %lu ",(unsigned long)len);
-    NSLog(@"%@", self.fullNumber);
+    self.numberOfButtons = [self.fullNumber integerValue];
+    //[self.numberField resignFirstResponder];
+    [self clearButtonArray];
+    [self setValuesForButtons];
+    //NSLog(@"Length of string: %lu ",(unsigned long)len);
+    NSLog(@"The number currently is: %@", self.fullNumber);
     //NSLog(@"Character: %c ",c);
     
      return 1;
