@@ -52,9 +52,6 @@
     self.main_tab.viewControllers = self.tabs_array;
     
     
-    
-    
-    
     [self.window addSubview:self.main_tab.view];
     [self.window makeKeyAndVisible];
     

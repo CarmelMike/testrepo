@@ -36,7 +36,7 @@
 
 - (UISlider*) createSlider:(NSInteger) yOrigin
 {
-    CGRect frame = CGRectMake(50, yOrigin, 220.0, 10.0);
+    CGRect frame = CGRectMake(50, self.startingYCoordinate + yOrigin, 220.0, 10.0);
     self.sliderBar = [[UISlider alloc] initWithFrame:frame];
 //    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
     [self.sliderBar setBackgroundColor:[UIColor clearColor]];
@@ -53,7 +53,7 @@
 - (UITextField*) createTextField:(NSInteger) yOrigin
 {
   //  UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
-    self.numberField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
+    self.numberField = [[UITextField alloc] initWithFrame:CGRectMake(50, self.startingYCoordinate + yOrigin, 220, 40)];
     self.numberField.borderStyle = UITextBorderStyleRoundedRect;
     self.numberField.font = [UIFont systemFontOfSize:15];
     self.numberField.placeholder = @"Enter number of buttons";
@@ -139,7 +139,7 @@
         self.numberOfButtons = 0;
     }
     
-    int yAdjustment = 180;
+    int yAdjustment = self.startingYCoordinate + 30;
     for (int i = 0; i < self.numberOfButtons; i++) {
         int y = (i + 1) * 100 + yAdjustment;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
