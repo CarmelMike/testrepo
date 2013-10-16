@@ -20,7 +20,7 @@
 		1695EA0C180DB48700D6BDD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1695EA0A180DB48700D6BDD3 /* InfoPlist.strings */; };
 		1695EA0E180DB48700D6BDD3 /* Hello_World_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695EA0D180DB48700D6BDD3 /* Hello_World_2Tests.m */; };
 		1695EA19180DB4B700D6BDD3 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1695EA18180DB4B700D6BDD3 /* HelloViewController.m */; };
-		169DC36C180F2F6F008701C8 /* HelloParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169DC36B180F2F6F008701C8 /* HelloParentViewController.m */; };
+		169DC36F180F445E008701C8 /* HelloTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169DC36E180F445E008701C8 /* HelloTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,8 @@
 		1695EA0D180DB48700D6BDD3 /* Hello_World_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hello_World_2Tests.m; sourceTree = "<group>"; };
 		1695EA17180DB4B600D6BDD3 /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloViewController.h; sourceTree = "<group>"; };
 		1695EA18180DB4B700D6BDD3 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
-		169DC36A180F2F6F008701C8 /* HelloParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloParentViewController.h; sourceTree = "<group>"; };
-		169DC36B180F2F6F008701C8 /* HelloParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloParentViewController.m; sourceTree = "<group>"; };
+		169DC36D180F445E008701C8 /* HelloTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloTabBarController.h; sourceTree = "<group>"; };
+		169DC36E180F445E008701C8 /* HelloTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +113,12 @@
 		1695E9EE180DB48600D6BDD3 /* Hello World 2 */ = {
 			isa = PBXGroup;
 			children = (
-				169DC36A180F2F6F008701C8 /* HelloParentViewController.h */,
-				169DC36B180F2F6F008701C8 /* HelloParentViewController.m */,
 				1695EA17180DB4B600D6BDD3 /* HelloViewController.h */,
 				1695EA18180DB4B700D6BDD3 /* HelloViewController.m */,
 				1695E9F7180DB48600D6BDD3 /* AppDelegate.h */,
 				1695E9F8180DB48600D6BDD3 /* AppDelegate.m */,
+				169DC36D180F445E008701C8 /* HelloTabBarController.h */,
+				169DC36E180F445E008701C8 /* HelloTabBarController.m */,
 				1695E9FA180DB48600D6BDD3 /* Images.xcassets */,
 				1695E9EF180DB48600D6BDD3 /* Supporting Files */,
 			);
@@ -250,9 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1695EA19180DB4B700D6BDD3 /* HelloViewController.m in Sources */,
+				169DC36F180F445E008701C8 /* HelloTabBarController.m in Sources */,
 				1695E9F9180DB48600D6BDD3 /* AppDelegate.m in Sources */,
 				1695E9F5180DB48600D6BDD3 /* main.m in Sources */,
-				169DC36C180F2F6F008701C8 /* HelloParentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HelloViewController.h"
-
+#import "HelloTabBarController.h"
 
 @implementation AppDelegate
 
@@ -19,8 +19,12 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    HelloViewController* firstViewController = [[HelloViewController alloc] init];
+    
+    //HelloViewController* firstViewController = [[HelloViewController alloc] init];
+    HelloTabBarController* firstViewController = [[HelloTabBarController alloc] init];
     [self.window setRootViewController:firstViewController];
+    
+    
     return YES;
 }
 
