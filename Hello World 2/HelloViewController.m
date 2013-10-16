@@ -19,30 +19,32 @@
 - (id)init
 {
     self.numberOfButtons = 100;
+    self.sliderValue = 2;
     NSLog(@"start init: %i", self.numberOfButtons);
     self = [super init];
     if (self) {
         self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];
-        NSLog(@"end init: %i", self.numberOfButtons);
         self.numberField = [self createTextField:30];
-        NSLog(@"end init2: %i", self.numberOfButtons);
+        self.sliderBar = [self createSlider:80];
     }
 
     return self;
 }
 
-- (*) createTextField:(NSInteger) yOrigin
+- (UISlider*) createSlider:(NSInteger) yOrigin
 {
-    CGRect frame = CGRectMake(0.0, 0.0, 200.0, 10.0);
-    UISlider *slider = [[UISlider alloc] initWithFrame:frame];
-    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
-    [slider setBackgroundColor:[UIColor clearColor]];
-    slider.minimumValue = 0.0;
-    slider.maximumValue = 50.0;
-    slider.continuous = YES;
-    slider.value = 25.0;
-
+    CGRect frame = CGRectMake(50, yOrigin, 220.0, 10.0);
+    self.sliderBar = [[UISlider alloc] initWithFrame:frame];
+//    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+    [self.sliderBar setBackgroundColor:[UIColor clearColor]];
+    self.sliderBar.minimumValue = 0.0;
+    self.sliderBar.maximumValue = 4.0;
+    self.sliderBar.continuous = NO;
+    self.sliderBar.value = 2;
+    self.sliderValue = self.sliderBar.value;
+    [self.view addSubview:self.sliderBar];
     
+    return self.sliderBar;
 }
 
 - (UITextField*) createTextField:(NSInteger) yOrigin
@@ -69,7 +71,9 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    self.numberOfButtons = [self.numberField.text integerValue];
+    self.numberOfButtons = self.sliderBar.value;
+    [self.sliderBar resignFirstResponder];
+    //self.numberOfButtons = [self.numberField.text integerValue];
     [self.numberField resignFirstResponder];
     [self clearButtonArray];
     [self setValuesForButtons];
@@ -86,6 +90,7 @@
 - (IBAction)backgroundTap:(id)sender {
 
     [self.numberField resignFirstResponder];
+    [self.sliderBar resignFirstResponder];
 }
 
 - (void) clearButtonArray

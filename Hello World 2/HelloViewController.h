@@ -12,7 +12,9 @@
 
 @property(nonatomic, retain) NSMutableArray *buttonArray;
 @property(nonatomic) int numberOfButtons;
+@property (nonatomic, retain) IBOutlet UISlider *sliderBar;
 @property (nonatomic, retain) IBOutlet UITextField *numberField;
+@property(nonatomic) int sliderValue;
 - (IBAction)backgroundTap:(id)sender;
 
 
