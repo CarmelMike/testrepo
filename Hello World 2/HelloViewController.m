@@ -5,7 +5,7 @@
 //  Created by Carmel on 10/15/13.
 //  Copyright (c) 2013 Carmel. All rights reserved.
 //
-// THIS IS SOME TEST CODE.... test
+//
 
 #import "HelloViewController.h"
 
@@ -47,8 +47,8 @@
     self.sliderBar.value = 2;
     self.sliderBar.continuous = YES;
     [self.sliderBar addTarget:self
-                       action:@selector(valueChanged:) //calls valueChanged function below
-     forControlEvents:UIControlEventValueChanged];
+                       action:@selector(valueChanged:)    //calls valueChanged function below
+            forControlEvents:UIControlEventValueChanged];
     self.sliderValue = self.sliderBar.value;
     [self.view addSubview:self.sliderBar];
     
@@ -99,11 +99,13 @@
 
 }
 
+
 - (IBAction)backgroundTap:(id)sender {
 
-    [self.numberField resignFirstResponder];
-    [self.sliderBar resignFirstResponder];
+    //[self.numberField resignFirstResponder];
+    //[self.sliderBar resignFirstResponder];
 }
+
 
 - (void) clearButtonArray
 {
@@ -114,18 +116,21 @@
 }
 
 
+//sets up the Button Array to be able to dynamically store mutiple buttons
+
 - (NSMutableArray*) createButtonArrayWithSize:(NSInteger) size
 {
     NSMutableArray *arrayOfButtons = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < size; i++) {
         UIButton *button = [[UIButton alloc] init];
-        button.tag = i;
+        button.tag = i; //this tag is used in the function buttonsPressed
         [arrayOfButtons addObject:button];
     }
     
     return arrayOfButtons;
 }
+
 
 - (void)viewDidLoad
 {
@@ -133,14 +138,17 @@
 	// Do any additional setup after loading the view.
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self setValuesForButtons];
 }
 
+
 - (void)setValuesForButtons
 {
+    //"Safety" functions to stay in the bounds of the array
     if (self.numberOfButtons >= 5){
         self.numberOfButtons = 5;
     }
@@ -148,12 +156,14 @@
         self.numberOfButtons = 0;
     }
     
+    //y adjustment can be used if I want to give myself more room under the text fields/slider for starting the placement of the buttons
     int yAdjustment = self.startingYCoordinate + 30;
     for (int i = 0; i < self.numberOfButtons; i++) {
         int y = (i + 1) * 100 + yAdjustment;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
     }
 }
+
 
 - (UIButton*) setButton:(UIButton*)button WithFrame:(CGRect) frame color:(UIColor*) color title:(NSString*) title
 {
@@ -173,7 +183,6 @@
 - (void)buttonPressed: (UIButton*) button{
 
     UIButton *tempButton;
-    //int tagNumber = button.tag;
     tempButton = (UIButton*)[self.buttonArray objectAtIndex:button.tag];
     if (tempButton.backgroundColor == [UIColor blackColor]){
         tempButton.backgroundColor = [UIColor redColor];
@@ -183,20 +192,22 @@
     }
 }
 
+
+//This is a default method provided by the UITextField class. This god function will track the changes in a text field in real time.
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 
-    self.fullNumber = [self.fullNumber stringByReplacingCharactersInRange:range withString:string];
+    self.fullNumber = [self.fullNumber stringByReplacingCharactersInRange:range withString:string]; //god mode command that tracks the changes in the string
     
+    //Once the string is read from the text field, I proceed to change the values in the text boxes.
     self.numberOfButtons = [self.fullNumber integerValue];
-    //[self.numberField resignFirstResponder];
     [self clearButtonArray];
     [self setValuesForButtons];
-    //NSLog(@"Length of string: %lu ",(unsigned long)len);
+
     NSLog(@"The number currently is: %@", self.fullNumber);
-    //NSLog(@"Character: %c ",c);
     
-     return 1;
+    return 1;
     
 }
 
