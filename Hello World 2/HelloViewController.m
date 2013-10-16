@@ -9,6 +9,7 @@
 
 #import "HelloViewController.h"
 
+
 @interface HelloViewController ()
 
 @end
@@ -75,7 +76,7 @@
     self.numberOfButtons = self.sliderBar.value;
     [self.sliderBar resignFirstResponder];
     //self.numberOfButtons = [self.numberField.text integerValue];
-    //[self.numberField resignFirstResponder];
+    [self.numberField resignFirstResponder];
     [self clearButtonArray];
     [self setValuesForButtons];
    // self.buttonArray = [self createButtonArrayWithSize:self.numberOfButtons];

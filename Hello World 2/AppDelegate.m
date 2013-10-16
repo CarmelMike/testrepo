@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HelloViewController.h"
 
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,7 +17,7 @@
     NSLog(@"App has started");
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor blueColor];
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     HelloViewController* firstViewController = [[HelloViewController alloc] init];
     [self.window setRootViewController:firstViewController];

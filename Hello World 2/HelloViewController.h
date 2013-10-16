@@ -5,10 +5,10 @@
 //  Created by Carmel on 10/15/13.
 //  Copyright (c) 2013 Carmel. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
+#import "HelloParentViewController.h"
 
-@interface HelloViewController : UIViewController <UITextFieldDelegate>
+@interface HelloViewController : HelloParentViewController <UITextFieldDelegate>
 
 @property(nonatomic, retain) NSMutableArray *buttonArray;
 @property(nonatomic) int numberOfButtons;

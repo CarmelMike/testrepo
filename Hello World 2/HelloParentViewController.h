@@ -10,4 +10,7 @@
 
 @interface HelloParentViewController : UIViewController
 
+@property (nonatomic, retain) UITabBarController *main_tab;
+@property (nonatomic, retain) NSArray *tabs_Array;
+
 @end

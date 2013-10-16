@@ -10,22 +10,32 @@
 
 @interface HelloParentViewController ()
 
+//@synthesize main_tab, tabs_Array;
+
 @end
 
 @implementation HelloParentViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    self.main_tab = [[UITabBarController alloc ] init];
+    self = [super init];
+    if (self){
+
     }
+    self.title = @"Parent Class";
+    self.main_tab.viewControllers = self.tabs_Array;
+    [self.view addSubview:self.main_tab.view];
+    
     return self;
 }
 
+
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
 }
 
