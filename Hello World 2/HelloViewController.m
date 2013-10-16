@@ -31,6 +31,20 @@
     return self;
 }
 
+- (*) createTextField:(NSInteger) yOrigin
+{
+    CGRect frame = CGRectMake(0.0, 0.0, 200.0, 10.0);
+    UISlider *slider = [[UISlider alloc] initWithFrame:frame];
+    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+    [slider setBackgroundColor:[UIColor clearColor]];
+    slider.minimumValue = 0.0;
+    slider.maximumValue = 50.0;
+    slider.continuous = YES;
+    slider.value = 25.0;
+
+    
+}
+
 - (UITextField*) createTextField:(NSInteger) yOrigin
 {
   //  UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50, yOrigin, 220, 40)];
@@ -42,6 +56,7 @@
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
     self.numberField.returnKeyType = UIReturnKeyDone;
     self.numberField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.numberField.delegate = self;
     
     //self.numberOfButtons = [self.numberField.text integerValue];
     NSLog(@"createTextField: %i", self.numberOfButtons);
@@ -53,6 +68,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     self.numberOfButtons = [self.numberField.text integerValue];
     [self.numberField resignFirstResponder];
     [self clearButtonArray];
@@ -108,6 +124,12 @@
 
 - (void)setValuesForButtons
 {
+    if (self.numberOfButtons >= 100){
+        self.numberOfButtons = 99;
+    }
+    if (self.numberOfButtons <= 0){
+        self.numberOfButtons = 0;
+    }
     for (int i = 0; i < self.numberOfButtons; i++) {
         int y = (i + 1) * 100;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
@@ -183,8 +205,10 @@
 */
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"Length: %lu ",(unsigned long)range.length);
+    NSLog(@"Range: %lu ",(unsigned long)range.location);
     NSLog(@"testing delegate %@",string);
     return 1;
 }
