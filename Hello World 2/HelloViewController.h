@@ -14,6 +14,7 @@
 @property(nonatomic) NSString *fullNumber;
 @property (nonatomic, retain) IBOutlet UISlider *sliderBar;
 @property (nonatomic, retain) IBOutlet UITextField *numberField;
+@property (nonatomic) int startingYCoordinate;
 @property(nonatomic) int sliderValue;
 - (IBAction)backgroundTap:(id)sender;
 

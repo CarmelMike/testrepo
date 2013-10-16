@@ -45,9 +45,14 @@
     self.viewController2.title = @"View 2";
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:self.viewController2];
     
+    
+    
     //self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nil];
     self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nav2, nil];
     self.main_tab.viewControllers = self.tabs_array;
+    
+    
+    
     
     
     [self.window addSubview:self.main_tab.view];

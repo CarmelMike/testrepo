@@ -19,6 +19,7 @@
 
 - (id)init
 {
+    self.startingYCoordinate = 60;
     self.numberOfButtons = 100;
     self.sliderValue = 2;
     self.fullNumber = @"";
@@ -138,7 +139,7 @@
         self.numberOfButtons = 0;
     }
     
-    int yAdjustment = 40;
+    int yAdjustment = 180;
     for (int i = 0; i < self.numberOfButtons; i++) {
         int y = (i + 1) * 100 + yAdjustment;
         self.buttonArray[i] = [self setButton:self.buttonArray[i] WithFrame:CGRectMake(50, y, 220, 75) color:[UIColor redColor] title:@"Paint It Black"];
