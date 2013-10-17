@@ -47,6 +47,11 @@
     
     
     
+    UIImage* tabBarBackground = [UIImage imageNamed:@"T-rex_wiki_logo.png"];
+    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+
+    
+    
     //self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nil];
     self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nav2, nil];
     self.main_tab.viewControllers = self.tabs_array;

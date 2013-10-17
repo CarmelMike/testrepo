@@ -100,6 +100,8 @@
 }
 
 
+//This function seems pointless, was added from an online. Leaving for now in case I still need it later.
+
 - (IBAction)backgroundTap:(id)sender {
 
     //[self.numberField resignFirstResponder];
@@ -210,6 +212,7 @@
     return 1;
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
