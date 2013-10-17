@@ -41,19 +41,25 @@
     firstViewController.title = @"View 1";
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:firstViewController];
     
+    
+    self.viewController1 = [[UIViewController alloc] init];
+    self.viewController1.title = @"View 2";
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:self.viewController1];
+    
+    
     self.viewController2 = [[UIViewController alloc] init];
-    self.viewController2.title = @"View 2";
-    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:self.viewController2];
+    self.viewController2.title = @"View 3";
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:self.viewController2];
     
     
     
-    UIImage* tabBarBackground = [UIImage imageNamed:@"T-rex_wiki_logo.png"];
+    UIImage* tabBarBackground = [UIImage imageNamed:@"shamrock.png"];
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
 
     
     
     //self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nil];
-    self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nav2, nil];
+    self.tabs_array = [[NSArray alloc] initWithObjects:nav1, nav2, nav3, nil];
     self.main_tab.viewControllers = self.tabs_array;
     
     

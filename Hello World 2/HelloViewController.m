@@ -151,8 +151,8 @@
 - (void)setValuesForButtons
 {
     //"Safety" functions to stay in the bounds of the array
-    if (self.numberOfButtons >= 5){
-        self.numberOfButtons = 5;
+    if (self.numberOfButtons >= 3){
+        self.numberOfButtons = 3;
     }
     if (self.numberOfButtons <= 0){
         self.numberOfButtons = 0;
